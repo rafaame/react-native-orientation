@@ -1,4 +1,4 @@
-var Orientation = require('react-native').NativeModules.Orientation;
+var OrientationModule = require('react-native').NativeModules.Orientation;
 var DeviceEventEmitter = require('react-native').DeviceEventEmitter;
 
 var listeners = {};
@@ -22,29 +22,29 @@ function getKey(listener){
 
 module.exports = {
   getOrientation(cb) {
-    Orientation.getOrientation((error,orientation) =>{
+    OrientationModule.getOrientation((error,orientation) =>{
       cb(error, orientation);
     });
   },
   getSpecificOrientation(cb) {
-    Orientation.getSpecificOrientation((error,orientation) =>{
+    OrientationModule.getSpecificOrientation((error,orientation) =>{
       cb(error, orientation);
     });
   },
   lockToPortrait() {
-    Orientation.lockToPortrait();
+    OrientationModule.lockToPortrait();
   },
   lockToLandscape() {
-    Orientation.lockToLandscape();
+    OrientationModule.lockToLandscape();
   },
   lockToLandscapeRight() {
-    Orientation.lockToLandscapeRight();
+    OrientationModule.lockToLandscapeRight();
   },
   lockToLandscapeLeft() {
-    Orientation.lockToLandscapeLeft();
+    OrientationModule.lockToLandscapeLeft();
   },
   unlockAllOrientations() {
-    Orientation.unlockAllOrientations();
+    OrientationModule.unlockAllOrientations();
   },
   addOrientationListener(cb) {
     var key = getKey(cb);
@@ -77,6 +77,6 @@ module.exports = {
     listeners[key] = null;
   },
   getInitialOrientation() {
-    return Orientation.initialOrientation;
+    return OrientationModule.initialOrientation;
   }
 }
